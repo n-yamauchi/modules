@@ -1,0 +1,14 @@
+## TODO nf-core: Please run the following command to build this file:
+#                nf-core modules create-test-yml meme/fimo
+- name: "meme fimo"
+  command: nextflow run ./tests/modules/meme/fimo -entry test_meme_fimo -c ./tests/config/nextflow.config -c ./tests/modules/meme/fimo/nextflow.config
+  tags:
+    - "meme"
+    #
+    - "meme/fimo"
+    #
+  files:
+    - path: "output/meme/test.bam"
+      md5sum: e667c7caad0bc4b7ac383fd023c654fc
+    - path: output/meme/versions.yml
+      md5sum: a01fe51bc4c6a3a6226fbf77b2c7cf3b
