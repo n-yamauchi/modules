@@ -1,17 +1,19 @@
 name: "meme_fimo"
 ## TODO nf-core: Add a description of the module and list keywords
-description: write your description here
+description: Scanning a set of sequences for individual matches to each of the motifs
 keywords:
-  - sort
+  - fimo
+  - meme
+  - fasta
 tools:
   - "meme":
       ## TODO nf-core: Add a description and other details for the software below
-      description: "Motif based sequence Analysis tools"
-      homepage: "None"
-      documentation: "None"
-      tool_dev_url: "None"
-      doi: ""
-      licence: "['Custom']"
+      description: |
+         Scanning for occurrences of a given motif
+      homepage: https://meme-suite.org/meme/tools/fimo
+      documentation: https://meme-suite.org/meme/doc/fimo.html
+      doi: 10.1093/bioinformatics/btr064
+      licence: "['https://techtransfer.universityofcalifornia.edu/NCD/20911.html']"
 
 ## TODO nf-core: Add a description of all of the variables used as input
 input:
@@ -23,10 +25,14 @@ input:
         e.g. [ id:'test', single_end:false ]
   # 
   ## TODO nf-core: Delete / customise this example input
-  - bam:
+  - meme:
       type: file
-      description: BAM/CRAM/SAM file
-      pattern: "*.{bam,cram,sam}"
+      description: The name of a file containing MEME formatted motifs.
+      pattern: "*.{meme}"
+  - fasta:
+      type: file
+      description: The name of a file containing a collection of sequences in FASTA format.
+      pattern: "*.{fa,fasta}"
 
 ## TODO nf-core: Add a description of all of the variables used as output
 output:
@@ -42,10 +48,26 @@ output:
       description: File containing software versions
       pattern: "versions.yml"
   ## TODO nf-core: Delete / customise this example output
-  - bam:
+  - html:
       type: file
-      description: Sorted BAM/CRAM/SAM file
-      pattern: "*.{bam,cram,sam}"
+      description: an HTML file that provides the results in a human-readable format
+      pattern: "*.{html}"
+  - tsv:
+      type: file
+      description: a TSV (tab-separated values) file that provides the results in a format suitable for parsing by scripts and viewing with Excel
+      pattern: "*.{tsv}"
+  - gff:
+      type: file
+      description:  a GFF3 format file that provides the results in a format suitable for display in the UCSC genome browser
+      pattern: "*.{gff}"
+  - cismlxml:
+      type: file
+      description:  that provides the results in the CisML schema
+      pattern: "*.{_cisml.xml}"
+  - fimoxml:
+      type: file
+      description:  that describes the inputs to FIMO and references the CISML file cisml.xml
+      pattern: "*.{_fimo.xml}"
 
 authors:
   - "@n-yamauchi"

@@ -35,11 +35,15 @@ process MEME_FIMO {
     //               https://github.com/nf-core/modules/blob/master/modules/bwa/index/main.nf
     // TODO nf-core: Where applicable please provide/convert compressed files as input/output
     //               e.g. "*.fastq.gz" and NOT "*.fastq", "*.bam" and NOT "*.sam" etc.
-    tuple val(meta), path(bam)
+    tuple val(meta), path(meme), path(fasta)
 
     output:
     // TODO nf-core: Named file extensions MUST be emitted for ALL output channels
-    tuple val(meta), path("*.bam"), emit: bam
+    tuple val(meta), path("*.html")     , optional: true, emit: html
+    tuple val(meta), path("*.tsv")      , optional: true, emit: tsv
+    tuple val(meta), path('*.gff')      , optional: true, emit: gff
+    tuple val(meta), path('*cisml.xml') , optional: true, emit: cismlxml
+    tuple val(meta), path('*fimo.xml')  , optional: true, emit: fimoxml
     // TODO nf-core: List additional required output channels/values here
     path "versions.yml"           , emit: versions
 
@@ -49,6 +53,11 @@ process MEME_FIMO {
     script:
     def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
+    def html_out = args.contains('-html') ? "-htmlout ${prefix}_fimo.html" : ''
+    def tsv_out = args.contains('-tsv') ? "-tsvout ${prefix}_fimo.tsv" : ''
+    def gff_out = args.contains('-gff') ? "-gffout ${prefix}_fimo.gff" : ''
+    def cisml_xml_out = args.contains('-cismlxml') ? "-cismlxmlout ${prefix}_cisml.xml" : ''
+    def fimo_xml_out = args.contains('-fimoxml') ? "-fimoxmlout ${prefix}_fimo.xml" : ''
     // TODO nf-core: Where possible, a command MUST be provided to obtain the version number of the software e.g. 1.10
     //               If the software is unable to output a version number on the command-line then it can be manually specified
     //               e.g. https://github.com/nf-core/modules/blob/master/modules/homer/annotatepeaks/main.nf
@@ -59,17 +68,20 @@ process MEME_FIMO {
     // TODO nf-core: Please replace the example samtools command below with your module's command
     // TODO nf-core: Please indent the command appropriately (4 spaces!!) to help with readability ;)
     """
-    samtools \\
-        sort \\
+    fimo \\
         $args \\
-        -@ $task.cpus \\
-        -o ${prefix}.bam \\
-        -T $prefix \\
-        $bam
+        $tsv_out \\
+        $gff_out \\
+        $cisml_xml_out \\
+        $fimo_xml_out \\
+        $html_out \\
+        $meme \\
+        $fasta 
+
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        meme: \$(echo \$(samtools --version 2>&1) | sed 's/^.*samtools //; s/Using.*\$//' ))
+        meme: \$(echo \$(fimo --version 2>&1) | sed 's/^.*fimo: //; s/Using.*\$//' ))
     END_VERSIONS
     """
 }

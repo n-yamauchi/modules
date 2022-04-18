@@ -1,9 +1,10 @@
 - name: muscle test_muscle
-  command: nextflow run ./tests/modules/muscle -entry test_muscle -c ./tests/config/nextflow.config -c ./tests/modules/muscle/nextflow.config
+  command: nextflow run tests/modules/muscle -entry test_muscle -c tests/config/nextflow.config
   tags:
     - muscle
   files:
     - path: output/muscle/muscle_msa.log
+      contains: '[ # TODO nf-core: file md5sum was variable, please replace this text with a string found in the file instead ]'
     - path: output/muscle/test_muscle_msa.afa
       md5sum: 93732f6876054d82b0cd252d702c143f
     - path: output/muscle/test_muscle_msa.phyi
@@ -12,3 +13,5 @@
       md5sum: 12f9dd45672a3d92ba1205fcc8010490
     - path: output/muscle/test_muscle_msa.tree
       md5sum: 6bf1080bca2440f08ffa2675f74f732a
+    - path: output/muscle/versions.yml
+      md5sum: e00b3f24997c43b2ce3109b51776f35f

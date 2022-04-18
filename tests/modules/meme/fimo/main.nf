@@ -7,8 +7,9 @@ include { MEME_FIMO } from '../../../../modules/meme/fimo/main.nf'
 workflow test_meme_fimo {
     
     input = [
-        [ id:'test', single_end:false ], // meta map
-        file(params.test_data['sarscov2']['illumina']['test_paired_end_bam'], checkIfExists: true)
+        [ id:'test' ], // meta map
+        file('/flash/LuscombeU/Naohiro/motif.meme', checkIfExists: true),
+        file(params.test_data['sarscov2']['genome']['genome_fasta'], checkIfExists: true)
     ]
 
     MEME_FIMO ( input )

@@ -1142,6 +1142,10 @@ megan/rma2info:
   - modules/megan/rma2info/**
   - tests/modules/megan/rma2info/**
 
+meme/fimo:
+  - modules/meme/fimo/**
+  - tests/modules/meme/fimo/**
+
 meningotype:
   - modules/meningotype/**
   - tests/modules/meningotype/**
