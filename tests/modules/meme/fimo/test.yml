@@ -1,8 +1,8 @@
 - name: meme fimo test_meme_fimo
   command: nextflow run tests/modules/meme/fimo -entry test_meme_fimo -c tests/config/nextflow.config
   tags:
-    - meme
     - meme/fimo
+    - meme
   files:
     - path: output/meme/versions.yml
       md5sum: 2eef8ad2541143368015bb55975b56ce
