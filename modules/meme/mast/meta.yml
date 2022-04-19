@@ -1,5 +1,5 @@
 name: "meme_mast"
-## TODO nf-core: Add a description of the module and list keywords
+
 description: Searches sequences for matches to a set of motifs, and sorts the sequences by the best combined match to all motifs
 keywords:
   - mast
@@ -7,14 +7,14 @@ keywords:
   - fasta
 tools:
   - "meme":
-      ## TODO nf-core: Add a description and other details for the software below
+
       description: "Scanning for occurrences of a given motif"
       homepage: https://meme-suite.org/meme/tools/mast
       documentation: https://meme-suite.org/meme/doc/mast.html
       doi: 10.1093/bioinformatics/14.1.48
       licence: "['https://techtransfer.universityofcalifornia.edu/NCD/20911.html']"
 
-## TODO nf-core: Add a description of all of the variables used as input
+
 input:
   # Only when we have meta
   - meta:
@@ -23,7 +23,7 @@ input:
         Groovy Map containing sample information
         e.g. [ id:'test', single_end:false ]
   # 
-  ## TODO nf-core: Delete / customise this example input
+
   - meme:
       type: file
       description: The name of a file containing MEME formatted motifs.
@@ -33,7 +33,7 @@ input:
       description: The name of a file containing a collection of sequences in FASTA format.
       pattern: "*.{fa,fasta}"
 
-## TODO nf-core: Add a description of all of the variables used as output
+
 output:
   #Only when we have meta
   - meta:
@@ -46,7 +46,7 @@ output:
       type: file
       description: File containing software versions
       pattern: "versions.yml"
-  ## TODO nf-core: Delete / customise this example output
+
   - html:
       type: file
       description: an HTML file that provides the results in a human-readable format
