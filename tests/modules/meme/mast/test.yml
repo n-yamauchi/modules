@@ -1,0 +1,14 @@
+- name: meme mast test_meme_mast
+  command: nextflow run tests/modules/meme/mast -entry test_meme_mast -c tests/config/nextflow.config
+  tags:
+    - meme
+    - meme/mast
+  files:
+    - path: output/meme/mast_out/mast.html
+      contains: '[ # TODO nf-core: file md5sum was variable, please replace this text with a string found in the file instead ]'
+    - path: output/meme/mast_out/mast.txt
+      contains: '[ # TODO nf-core: file md5sum was variable, please replace this text with a string found in the file instead ]'
+    - path: output/meme/mast_out/mast.xml
+      contains: '[ # TODO nf-core: file md5sum was variable, please replace this text with a string found in the file instead ]'
+    - path: output/meme/versions.yml
+      md5sum: 793108fb9e05d79594076d774c687d44

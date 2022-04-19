@@ -1146,6 +1146,10 @@ meme/fimo:
   - modules/meme/fimo/**
   - tests/modules/meme/fimo/**
 
+meme/mast:
+  - modules/meme/mast/**
+  - tests/modules/meme/mast/**
+
 meningotype:
   - modules/meningotype/**
   - tests/modules/meningotype/**
