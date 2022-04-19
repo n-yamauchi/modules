@@ -8,7 +8,7 @@ workflow test_meme_fimo {
     
     input = [
         [ id:'test' ], // meta map
-        file('/flash/LuscombeU/Naohiro/motif.meme', checkIfExists: true),
+        file(params.test_data['bacteroides_fragilis']['motif']['motif_meme'], checkIfExists: true),
         file(params.test_data['sarscov2']['genome']['genome_fasta'], checkIfExists: true)
     ]
 

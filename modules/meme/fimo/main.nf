@@ -39,11 +39,11 @@ process MEME_FIMO {
 
     output:
     // TODO nf-core: Named file extensions MUST be emitted for ALL output channels
-    tuple val(meta), path("*.html")     , optional: true, emit: html
-    tuple val(meta), path("*.tsv")      , optional: true, emit: tsv
-    tuple val(meta), path('*.gff')      , optional: true, emit: gff
-    tuple val(meta), path('*cisml.xml') , optional: true, emit: cismlxml
-    tuple val(meta), path('*fimo.xml')  , optional: true, emit: fimoxml
+    tuple val(meta), path('fimo_out/*.html')     , optional: true, emit: html
+    tuple val(meta), path('fimo_out/*.tsv')      , optional: true, emit: tsv
+    tuple val(meta), path('fimo_out/*.gff')      , optional: true, emit: gff
+    tuple val(meta), path('fimo_out/*cisml.xml') , optional: true, emit: cismlxml
+    tuple val(meta), path('fimo_out/*fimo.xml')  , optional: true, emit: fimoxml
     // TODO nf-core: List additional required output channels/values here
     path "versions.yml"           , emit: versions
 
@@ -81,7 +81,7 @@ process MEME_FIMO {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        meme: \$(echo \$(fimo --version 2>&1) | sed 's/^.*fimo: //; s/Using.*\$//' ))
+        meme: \$(echo \$(fimo --version 2>&1) | sed 's/^.*fimo: //; s/ .*\$//' ))
     END_VERSIONS
     """
 }
