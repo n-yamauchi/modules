@@ -14,11 +14,11 @@ process MEME_FIMO {
 
     output:
 
-    tuple val(meta), path('fimo_out/*.html')     , optional: true, emit: html
-    tuple val(meta), path('fimo_out/*.tsv')      , optional: true, emit: tsv
-    tuple val(meta), path('fimo_out/*.gff')      , optional: true, emit: gff
-    tuple val(meta), path('fimo_out/*cisml.xml') , optional: true, emit: cismlxml
-    tuple val(meta), path('fimo_out/*fimo.xml')  , optional: true, emit: fimoxml
+    tuple val(meta), path('fimo_out/*.html')     , emit: html
+    tuple val(meta), path('fimo_out/*.tsv')      , emit: tsv
+    tuple val(meta), path('fimo_out/*.gff')      , emit: gff
+    tuple val(meta), path('fimo_out/*cisml.xml') , emit: cismlxml
+    tuple val(meta), path('fimo_out/*fimo.xml')  , emit: fimoxml
 
     path "versions.yml"           , emit: versions
 
@@ -28,20 +28,15 @@ process MEME_FIMO {
     script:
     def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
-    def html_out = args.contains('-html') ? "-htmlout ${prefix}_fimo.html" : ''
-    def tsv_out = args.contains('-tsv') ? "-tsvout ${prefix}_fimo.tsv" : ''
-    def gff_out = args.contains('-gff') ? "-gffout ${prefix}_fimo.gff" : ''
-    def cisml_xml_out = args.contains('-cismlxml') ? "-cismlxmlout ${prefix}_cisml.xml" : ''
-    def fimo_xml_out = args.contains('-fimoxml') ? "-fimoxmlout ${prefix}_fimo.xml" : ''
+    // def html_out = args.contains('-html') ? "-htmlout ${prefix}_fimo.html" : ''
+    // def tsv_out = args.contains('-tsv') ? "-tsvout ${prefix}_fimo.tsv" : ''
+    // def gff_out = args.contains('-gff') ? "-gffout ${prefix}_fimo.gff" : ''
+    // def cisml_xml_out = args.contains('-cismlxml') ? "-cismlxmlout ${prefix}_cisml.xml" : ''
+    // def fimo_xml_out = args.contains('-fimoxml') ? "-fimoxmlout ${prefix}_fimo.xml" : ''
 
     """
     fimo \\
         $args \\
-        $tsv_out \\
-        $gff_out \\
-        $cisml_xml_out \\
-        $fimo_xml_out \\
-        $html_out \\
         $meme \\
         $fasta 
 

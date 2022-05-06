@@ -26,16 +26,13 @@ process MEME_MAST {
     script:
     def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
-    def html_out = args.contains('-html') ? "-htmlout ${prefix}_mast.html" : ''
-    def txt_out = args.contains('-txt') ? "-txtout ${prefix}_mast.txt" : ''
-    def xml_out = args.contains('-xml') ? "-xmlout ${prefix}_mast.xml" : ''
+    // def html_out = args.contains('-html') ? "-htmlout ${prefix}_mast.html" : ''
+    // def txt_out = args.contains('-txt') ? "-txtout ${prefix}_mast.txt" : ''
+    // def xml_out = args.contains('-xml') ? "-xmlout ${prefix}_mast.xml" : ''
 
     """
     mast \\
         $args \\
-        $txt_out \\
-        $xml_out \\
-        $html_out \\
         $meme \\
         $fasta 
 
