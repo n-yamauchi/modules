@@ -1,18 +1,18 @@
 - name: meme fimo test_meme_fimo
   command: nextflow run tests/modules/meme/fimo -entry test_meme_fimo -c tests/config/nextflow.config
   tags:
-    - meme/fimo
     - meme
+    - meme/fimo
   files:
-    - path: output/meme/fimo_out/cisml.xml
-      md5sum: 661308af04506ca7aaa68224e717625c
-    - path: output/meme/fimo_out/fimo.gff
+    - path: output/meme/test1/cisml.xml
+      md5sum: 9aa3d75d62d19c59d5efad13a34f0061
+    - path: output/meme/test1/fimo.gff
       md5sum: 54d85164ada62e9f95d2949bd88ecc78
-    - path: output/meme/fimo_out/fimo.html
-      md5sum: 1b41ff65a2169132173286a3b4bca051
-    - path: output/meme/fimo_out/fimo.tsv
-      md5sum: eed17af362f2b54c6b9b6c6c57f10c14
-    - path: output/meme/fimo_out/fimo.xml
-      md5sum: e5bcb0df49fcb7d5c935c57aecdd9965
+    - path: output/meme/test1/fimo.html
+      md5sum: 948534c88765e7be14a46693f0fc11c4
+    - path: output/meme/test1/fimo.tsv
+      md5sum: 3a0c8ef0b02e527e7a2463bc2ff40f35
+    - path: output/meme/test1/fimo.xml
+      md5sum: d51cde94ca97973d095845ec1eb0b8dc
     - path: output/meme/versions.yml
       md5sum: 2eef8ad2541143368015bb55975b56ce
