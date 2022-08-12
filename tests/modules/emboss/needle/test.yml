@@ -1,0 +1,10 @@
+- name: emboss needle test_emboss_needle
+  command: nextflow run tests/modules/emboss/needle -entry test_emboss_needle -c tests/config/nextflow.config
+  tags:
+    - emboss
+    - emboss/needle
+  files:
+    - path: output/emboss/test.needle.txt
+      contains: '[ # TODO nf-core: file md5sum was variable, please replace this text with a string found in the file instead ]'
+    - path: output/emboss/versions.yml
+      md5sum: 5cb36345ca3182d46656a5ccc1959704

@@ -1,0 +1,48 @@
+name: "emboss_needle"
+description: "It uses the Needleman-Wunsch alignment algorithm to find the optimum alignment (including gaps) of two sequences along their entire length."
+keywords:
+  - Needleman-Wunsch
+  - alignment
+  - fasta
+  - DNA sequence
+tools:
+  - "emboss":
+      description: "The European Molecular Biology Open Software Suite"
+      homepage: "https://www.ebi.ac.uk/Tools/emboss/"
+      documentation: "http://emboss.sourceforge.net/docs/"
+      tool_dev_url: "http://emboss.sourceforge.net/developers/"
+      doi: "10.1016/s0168-9525(00)02024-2"
+      licence: "['GPL']"
+
+input:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [ id:'test', single_end:false ]
+  - fasta1:
+      type: file
+      description: Input fasta file containing a sequence
+      pattern: "*.{fa,fasta}"
+  - fasta2:
+      type: file
+      description: Input fasta file containing a sequence
+      pattern: "*.{fa,fasta}"
+
+output:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [ id:'test', single_end:false ]
+  - txt:
+      type: file
+      description: File containing an alignment result
+      pattern: "*.{needle.txt}"
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+
+authors:
+  - "@n-yamauchi"
