@@ -1,0 +1,10 @@
+- name: phast phylop test_phast_phylop
+  command: nextflow run tests/modules/phast/phylop -entry test_phast_phylop -c tests/config/nextflow.config
+  tags:
+    - phast/phylop
+    - phast
+  files:
+    - path: output/phast/test.wig
+      md5sum: 8fc4e1e6ab355727a853713bc8d1a437
+    - path: output/phast/versions.yml
+      md5sum: cbe396a242b0bd6ca1a432475c7e2aab

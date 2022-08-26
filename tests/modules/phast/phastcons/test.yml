@@ -1,0 +1,10 @@
+- name: phast phastcons test_phast_phastcons
+  command: nextflow run tests/modules/phast/phastcons -entry test_phast_phastcons -c tests/config/nextflow.config
+  tags:
+    - phast/phastcons
+    - phast
+  files:
+    - path: output/phast/test.wig
+      md5sum: aa143f1bd3ce459e16b15c28f5e40ec2
+    - path: output/phast/versions.yml
+      md5sum: 6cd2e72fa5b4049e8472c13b7a8b8365

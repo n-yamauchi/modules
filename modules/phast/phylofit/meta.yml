@@ -1,0 +1,48 @@
+name: "phast_phylofit"
+description: Fits one or more tree models to a multiple alignment of DNA
+    sequences by maximum likelihood, using the specified tree topology
+    and substitution model
+keywords:
+  - phylogenetic model
+  - fasta
+tools:
+  - "phast":
+      description: "PHAST is a freely available software package for comparative and evolutionary genomics."
+      homepage: "http://compgen.cshl.edu/phast/"
+      documentation: "http://compgen.cshl.edu/phast/help-pages/"
+      tool_dev_url: "None"
+      doi: ""
+      licence: "['BSD']"
+
+input:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [ id:'test', single_end:false ]
+  - fasta:
+      type: file
+      description: Multiple aligned fasta file
+      pattern: "*.{fasta,fasta.gz,fa,fa.gz,fna,fna.gz,faa,faa.gz}"
+  - tree:
+      type: file
+      description: Guide tree file
+      pattern: "*.{dnd}"
+
+output:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [ id:'test', single_end:false ]
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+  - mod:
+      type: file
+      description: Phylogenetic tree model
+      pattern: "*.{mod}"
+
+authors:
+  - "@johannesnicolaus"

@@ -587,6 +587,14 @@ ectyper:
   - modules/ectyper/**
   - tests/modules/ectyper/**
 
+emboss/needle:
+  - modules/emboss/needle/**
+  - tests/modules/emboss/needle/**
+
+emboss/water:
+  - modules/emboss/water/**
+  - tests/modules/emboss/water/**
+
 emmtyper:
   - modules/emmtyper/**
   - tests/modules/emmtyper/**

@@ -1,0 +1,46 @@
+name: "phast_phylop"
+description: Compute conservation or acceleration p-values based on an alignment
+keywords:
+  - phylogenetic analysis
+  - fasta
+tools:
+  - "phast":
+      description: "PHAST is a freely available software package for comparative and evolutionary genomics."
+      homepage: "http://compgen.cshl.edu/phast/"
+      documentation: "http://compgen.cshl.edu/phast/help-pages/"
+      tool_dev_url: "None"
+      doi: ""
+      licence: "['BSD']"
+
+input:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [ id:'test', single_end:false ]
+  - fasta:
+      type: file
+      description: multiple aligned fasta file
+      pattern: "*.{mfa,mfa.gz,fasta,fasta.gz,fa,fa.gz,fna,fna.gz,faa,faa.gz}"
+  - mod:
+      type: file
+      description: phylogenetic model file
+      pattern: "*.{mod}"
+
+output:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [ id:'test', single_end:false ]
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+  - wig:
+      type: file
+      description: Conservation scores (-log10 p-values) for each site in an alignment  in the fixed-step wig format
+      pattern: "*.{wig}"
+
+authors:
+  - "@johannesnicolaus"
